@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Reservation-front-app';
+  title = 'final_exam_angular_app';
 }

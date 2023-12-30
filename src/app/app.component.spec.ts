@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Reservation-front-app'`, () => {
+  it(`should have as title 'final_exam_angular_app'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('Reservation-front-app');
+    expect(app.title).toEqual('final_exam_angular_app');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, Reservation-front-app');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, final_exam_angular_app');
   });
 });
