@@ -1,7 +1,6 @@
 import {Person} from "./Person";
 
 export interface Reservation{
-
   id: number;
   name: string;
   context: string;
