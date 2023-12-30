@@ -1,0 +1,19 @@
+<h1 class="p-4">Ressources</h1>
+<div class="card ps-3">
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <th>ID</th>
+      <th>Material Info</th>
+      <th>Material audio Vesual</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of ressources">
+        <td>{{p.id}}</td>
+        <td>{{p.materiel_info}}</td>
+        <td>{{p.materiel_audio_vusuel}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
