@@ -1,0 +1,35 @@
+<div class="container">
+  <h1 class="text-center text-info">Users</h1>
+  <table class="table shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th class="text-center">Nom</th>
+      <th class="text-center">Email</th>
+      <th class="text-center">Fonction</th>
+      <th> </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let p of persons | paginate:{itemsPerPage:5,currentPage:page}">
+      <td >{{p.id}}</td>
+      <td class="text-center">{{p.nom}}</td>
+      <td class="text-center">{{p.email}}</td>
+      <td class="text-center">{{p.fonction}}</td>
+      <td *ngIf="keycloak.getUserRoles().includes('ADMIN')">
+        <button class="btn" (click)="deletePerson(p.id)">
+          <i class="bi bi-trash text-danger"></i>
+        </button>
+        <button class="btn"  data-bs-toggle="modal" data-bs-target="#updateModal" (click)="editPerson(p)">
+          <i class="bi bi-pen text-info"></i>
+        </button>
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="text-center">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
+
+</div>

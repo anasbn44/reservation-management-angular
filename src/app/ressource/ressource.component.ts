@@ -1,26 +1,47 @@
 import {Component, OnInit} from '@angular/core';
-import {Ressource} from "../model/Ressource";
-import {RessourceService} from "../services/ressource.service";
+import {HttpClient} from "@angular/common/http";
+import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-ressource',
   templateUrl: './ressource.component.html',
   styleUrl: './ressource.component.css'
 })
-export class RessourceComponent implements OnInit{
+export class RessourceComponent{
+  resources : any;
+  page:number = 1;
+  constructor(private http:HttpClient, public keycloak:KeycloakService) {
+    this.http
+      .get("http://localhost:8001/Resources")
+      .subscribe(
+        {
+          next: value => {
+            console.log(value)
+            this.resources = value
+          },
+          error: err => {
+            console.log(err)
+          }
+        }
+      )
+  }
 
+  deleteResource(idResource:number) {
+    this.http.delete("http://localhost:8000/resource-service/delete/"+idResource)
+      .subscribe(
+        {
+          next: value => {
+            window.location.reload()
+          },
+          error: err => {
+            console.log(err)
+          }
+        }
+      )
 
-  ressources : Ressource[] | undefined;
-  constructor(private ressourceService: RessourceService) { }
-  ngOnInit(): void {
+  }
 
-    this.ressourceService.getProducts().subscribe({
-      next: (data: Ressource[]) => {
-        this.ressources = data;
-      },
-      error: (err: any) => {
-        console.log(err);
-      }
-    })
+  editResource(resource: any) {
+
   }
 }

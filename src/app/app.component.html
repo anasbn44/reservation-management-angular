@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark-subtle p-3">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">RESERVATION MANAGEMENT</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,31 +11,39 @@
           <a class="nav-link mx-2 active" aria-current="page" routerLink="/" >Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link mx-2" routerLink="/ressource" >Ressource</a>
+          <a class="nav-link mx-2" routerLink="/resource" >Resource</a>
+        </li>
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link mx-2" routerLink="/newReservation" >Reserve</a>-->
+<!--        </li>-->
+        <li class="nav-item">
+        <a class="nav-link mx-2" routerLink="/reservation" *ngIf="keycloak.getUserRoles().includes('ADMIN')" >Reservation</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link mx-2" routerLink="/reservation" >Reservation</a>
+          <a class="nav-link mx-2" routerLink="/users" *ngIf="keycloak.getUserRoles().includes('ADMIN')" >Users</a>
         </li>
+      </ul>
+      <ul class="navbar navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span >Account</span>
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" >Login</a></li>
-            <li>
-              <form method="post">
-                <button class="btn" >Logout</button>
-              </form>
-            </li>
-            <li><a class="dropdown-item" href="#">Contact us</a></li>
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <span *ngIf="profile; else loginTemplate">
+              {{profile.username}}
+              <ul class="dropdown-menu">
+            <li><a class="dropdown-item" (click)="onLogout()"  >Logout</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a (click)="account()" class="dropdown-item" >Account</a></li>
           </ul>
+            </span>
+            <ng-template #loginTemplate>
+              <button class="btn btn-light" (click)="login()">Login</button>
+            </ng-template>
+          </a>
+
         </li>
       </ul>
     </div>
   </div>
 </nav>
 <div class="container">
-  <router-outlet>
-
-  </router-outlet>
+  <router-outlet></router-outlet>
 </div>
