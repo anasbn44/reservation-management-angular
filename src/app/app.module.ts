@@ -10,13 +10,13 @@ import {HttpClientModule} from "@angular/common/http";
 import { PersonComponent } from './person/person.component';
 import {KeycloakAngularModule, KeycloakService} from "keycloak-angular";
 import {NgxPaginationModule} from "ngx-pagination";
-import { NewReservationComponent } from './new-reservation/new-reservation.component';
+import {environment} from "../environments/environment";
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
-        url: 'http://localhost:8080',
+        url: environment.KEYCLOAK_URL,
         realm: 'exam-realm',
         clientId: 'ng-reserve-client',
       },
@@ -24,7 +24,10 @@ function initializeKeycloak(keycloak: KeycloakService) {
         onLoad: 'check-sso',
         silentCheckSsoRedirectUri:
           window.location.origin + '/assets/silent-check-sso.html'
-      }
+      },
+      bearerExcludedUrls: [
+        'main$'
+      ]
     });
 }
 @NgModule({
@@ -34,7 +37,6 @@ function initializeKeycloak(keycloak: KeycloakService) {
     ReservationComponent,
     HomeComponent,
     PersonComponent,
-    NewReservationComponent
   ],
   imports: [
     BrowserModule,

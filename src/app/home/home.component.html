@@ -1,4 +1,7 @@
-
-<h2>Reservation App</h2>
-
+<h2 class="text-center text-dark-emphasis p-4">WELOCOME TO</h2>
+<h2 class="text-center text-info">Reservation App</h2>
+<div *ngIf="!keycloak.isLoggedIn()" class="text-center">
+  <h4 class="text-info">To get started login in or create an account</h4>
+  <button class="btn btn-outline-dark" (click)="login()">Login</button>
+</div>
 

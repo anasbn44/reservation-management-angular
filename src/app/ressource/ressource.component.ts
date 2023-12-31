@@ -27,7 +27,7 @@ export class RessourceComponent{
   }
 
   deleteResource(idResource:number) {
-    this.http.delete("http://localhost:8000/resource-service/delete/"+idResource)
+    this.http.delete("http://localhost:8001/delete/"+idResource)
       .subscribe(
         {
           next: value => {

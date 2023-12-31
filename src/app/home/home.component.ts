@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {KeycloakService} from "keycloak-angular";
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(public keycloak:KeycloakService) {
+  }
 
+  async login(){
+    await this.keycloak.login({
+      redirectUri : window.location.origin
+    })
+  }
 }

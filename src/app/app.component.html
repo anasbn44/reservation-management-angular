@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark-subtle p-3">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark-subtle">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">RESERVATION MANAGEMENT</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,19 +8,19 @@
     <div class=" collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ms-auto ">
         <li class="nav-item">
-          <a class="nav-link mx-2 active" aria-current="page" routerLink="/" >Home</a>
+          <a class="nav-link active" aria-current="page" routerLink="/" >Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link mx-2" routerLink="/resource" >Resource</a>
+          <a class="nav-link" routerLink="/resource" *ngIf="keycloak.isLoggedIn()">Resource</a>
         </li>
 <!--        <li class="nav-item">-->
 <!--          <a class="nav-link mx-2" routerLink="/newReservation" >Reserve</a>-->
 <!--        </li>-->
         <li class="nav-item">
-        <a class="nav-link mx-2" routerLink="/reservation" *ngIf="keycloak.getUserRoles().includes('ADMIN')" >Reservation</a>
+        <a class="nav-link" routerLink="/reservation" *ngIf="keycloak.getUserRoles().includes('ADMIN')" >Reservation</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link mx-2" routerLink="/users" *ngIf="keycloak.getUserRoles().includes('ADMIN')" >Users</a>
+          <a class="nav-link" routerLink="/users" *ngIf="keycloak.getUserRoles().includes('ADMIN')" >Users</a>
         </li>
       </ul>
       <ul class="navbar navbar-nav">

@@ -9,7 +9,7 @@ import {KeycloakService} from "keycloak-angular";
 })
 export class ReservationComponent {
   reservation:any;
-  reservationById:any|null;
+  reservationById:any;
   editRes:any|null;
   page:number = 1;
   resource:any|null;

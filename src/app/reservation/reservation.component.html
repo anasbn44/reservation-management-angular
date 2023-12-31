@@ -27,10 +27,10 @@
       </td>
       <td *ngIf="keycloak.getUserRoles().includes('ADMIN')">
         <button class="btn" (click)="deleteReservation(r.id)">
-          <i class="bi bi-trash text-danger"></i>
+          <i class="bi bi-trash3-fill text-danger"></i>
         </button>
         <button class="btn"  data-bs-toggle="modal" data-bs-target="#updateModal" (click)="editReservation(r)">
-          <i class="bi bi-pen text-info"></i>
+          <i class="bi bi-pencil-fill text-info"></i>
         </button>
 
       </td>
@@ -55,21 +55,21 @@
       </div>
       <div class="modal-body text-center">
         <ul class="list-group">
-          <li class="list-group-item">Reservation Id : {{reservationById.id}}</li>
-          <li class="list-group-item">Name : {{reservationById.nom}}</li>
-          <li class="list-group-item">Context : {{reservationById.contexte}}</li>
-          <li class="list-group-item">Date : {{reservationById.date | date : 'dd/MM/yyyy'}}</li>
-          <li class="list-group-item">Duration : {{reservationById.duree}}</li>
+          <li class="list-group-item">Reservation Id : {{reservationById?.id}}</li>
+          <li class="list-group-item">Name : {{reservationById?.nom}}</li>
+          <li class="list-group-item">Context : {{reservationById?.contexte}}</li>
+          <li class="list-group-item">Date : {{reservationById?.date | date : 'dd/MM/yyyy'}}</li>
+          <li class="list-group-item">Duration : {{reservationById?.duree}}</li>
         </ul>
         <ul class="list-group">
-          <li class="list-group-item">Person Id : {{reservationById.personne.id}}</li>
-          <li class="list-group-item">Person Name : {{reservationById.personne.nom}}</li>
-          <li class="list-group-item">Person Function : {{reservationById.personne.fonction}}</li>
+          <li class="list-group-item">Person Id : {{reservationById?.personne.id}}</li>
+          <li class="list-group-item">Person Name : {{reservationById?.personne.nom}}</li>
+          <li class="list-group-item">Person Function : {{reservationById?.personne.fonction}}</li>
         </ul>
         <ul class="list-group">
-          <li class="list-group-item">Resource Id : {{reservationById.resource.id}}</li>
-          <li class="list-group-item">Resource Name : {{reservationById.resource.nom}}</li>
-          <li class="list-group-item">Resource Function : {{reservationById.resource.type}}</li>
+          <li class="list-group-item">Resource Id : {{reservationById?.resource.id}}</li>
+          <li class="list-group-item">Resource Name : {{reservationById?.resource.nom}}</li>
+          <li class="list-group-item">Resource Function : {{reservationById?.resource.type}}</li>
         </ul>
       </div>
     </div>
